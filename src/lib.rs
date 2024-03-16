@@ -86,7 +86,7 @@ impl<T> HybridLock<T> {
     /// Runs the given callback without acquiring the lock with fallback mode.
     ///
     /// The calling thread will be blocked when falling back to acquiring a shared access.
-    /// This will happen when the optimisic run fails due to a concurrent writer.
+    /// This will happen when the optimistic run fails due to a concurrent writer.
     #[doc = include_str!("./callback-safety.md")]
     pub unsafe fn optimistic<F, R>(&self, f: F) -> R
     where
@@ -126,7 +126,7 @@ impl<T> HybridLock<T> {
 
     /// Returns a raw pointer to the underlying data.
     ///
-    /// This is useful when you want to validate the optimisitc operations by yourself,
+    /// This is useful when you want to validate the optimistic operations by yourself,
     /// e.g., when the operation involves one or more optimistic locks.
     ///
     /// ## Example
